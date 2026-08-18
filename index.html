@@ -134,13 +134,19 @@
       background: transparent;
     }
     .cart-button {
-      gap: 9px;
-      padding: 0 16px;
-      border: 1px solid var(--line);
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 17px;
+      border: 2px solid var(--ink);
       border-radius: 7px;
+      color: #fff;
+      background: var(--ink);
       font-size: .82rem;
-      font-weight: 800;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(23, 56, 44, .16);
     }
+    .cart-button:hover { background: var(--ink-deep); }
+    .cart-label { display: inline-flex; align-items: center; gap: 7px; }
     .cart-count {
       display: grid;
       min-width: 22px;
@@ -150,7 +156,7 @@
       border-radius: 999px;
       color: white;
       background: var(--copper);
-      font-size: .7rem;
+      font-size: .76rem;
     }
     .menu-button { display: none; width: 44px; border: 1px solid var(--line); border-radius: 7px; font-size: 1.35rem; }
 
@@ -224,16 +230,27 @@
     .trust-item strong { display: block; font-size: .84rem; }
     .trust-item small { display: block; margin-top: 2px; color: var(--muted); font-size: .74rem; }
 
+    .buy-steps { padding: 38px 0; border-bottom: 1px solid var(--line); background: var(--warm); }
+    .buy-steps-head { margin-bottom: 22px; text-align: center; }
+    .buy-steps-head strong { display: block; font-family: var(--serif); font-size: 1.8rem; font-weight: 500; }
+    .buy-steps-head span { display: block; margin-top: 5px; color: var(--muted); font-size: .86rem; }
+    .buy-steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .buy-step { display: grid; grid-template-columns: 52px 1fr; gap: 15px; align-items: center; padding: 20px; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
+    .buy-step-number { display: grid; width: 52px; height: 52px; place-items: center; border-radius: 50%; color: #fff; background: var(--copper); font-family: var(--serif); font-size: 1.45rem; }
+    .buy-step strong { display: block; font-size: .92rem; }
+    .buy-step span:last-child { display: block; margin-top: 3px; color: var(--muted); font-size: .77rem; line-height: 1.45; }
+
     .catalog { padding: 120px 0 130px; background: #fff; }
     .catalog-head { display: flex; align-items: end; justify-content: space-between; gap: 36px; }
-    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 42px; }
+    .catalog-cart-cta { min-width: 250px; min-height: 58px; border: 2px solid var(--copper); color: #fff; background: var(--copper); font-size: .88rem; }
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 42px; }
     .product-card {
       position: relative;
       display: flex;
       min-width: 0;
       flex-direction: column;
       overflow: hidden;
-      border: 1px solid rgba(23, 56, 44, .1);
+      border: 2px solid rgba(23, 56, 44, .12);
       border-radius: var(--radius);
       background: var(--paper);
       transition: transform .3s ease, box-shadow .3s ease;
@@ -269,14 +286,32 @@
     .product-body { display: flex; flex: 1; flex-direction: column; padding: 22px; }
     .product-kicker { margin: 0 0 7px; color: var(--olive); font-size: .67rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
     .product-name { margin: 0; font-family: var(--serif); font-size: 1.35rem; font-weight: 500; line-height: 1.06; }
-    .product-desc { min-height: 42px; margin: 11px 0 0; color: var(--muted); font-size: .78rem; line-height: 1.5; }
+    .product-desc { min-height: 42px; margin: 11px 0 0; color: var(--muted); font-size: .88rem; line-height: 1.5; }
     .price-row { display: flex; align-items: end; justify-content: space-between; gap: 10px; margin-top: 22px; }
     .price-label { display: block; margin-bottom: 2px; color: var(--muted); font-size: .64rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
     .price { font-family: var(--serif); font-size: 1.72rem; line-height: 1; }
     .price-compare { color: var(--muted); font-size: .7rem; line-height: 1.35; text-align: right; }
     .price-compare strong { display: block; color: var(--copper-dark); font-size: .78rem; }
-    .add-button { width: 100%; margin-top: 18px; }
+    .add-button { width: 100%; min-height: 58px; margin-top: 0; font-size: .84rem; }
     .add-button.added { background: var(--copper); }
+    .product-buy-label { display: block; margin-bottom: 7px; color: var(--ink); font-size: .74rem; font-weight: 900; }
+    .product-quantity { width: 100%; min-height: 52px; padding: 0 13px; border: 2px solid var(--line); border-radius: 7px; color: var(--ink); background: #fff; font: 800 .9rem var(--sans); }
+    .in-cart-note { margin: 0; padding: 10px 12px; border-radius: 6px; color: var(--muted); background: var(--warm); font-size: .76rem; text-align: center; }
+    .in-cart-note strong { color: var(--copper-dark); }
+
+    .recipes { padding: 120px 0; background: var(--warm); }
+    .recipes-head { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 42px; }
+    .recipes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .recipe-card { overflow: hidden; border: 1px solid var(--line); border-radius: 9px; background: #fff; }
+    .recipe-image { height: 245px; overflow: hidden; background: #e8e2d7; }
+    .recipe-image img { width: 100%; height: 100%; object-fit: cover; }
+    .recipe-body { padding: 26px; }
+    .recipe-time { display: inline-block; padding: 6px 9px; border-radius: 4px; color: #fff; background: var(--olive); font-size: .68rem; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; }
+    .recipe-card h3 { margin: 17px 0 9px; font-family: var(--serif); font-size: 1.65rem; font-weight: 500; line-height: 1.05; }
+    .recipe-intro { margin: 0; color: var(--muted); font-size: .83rem; }
+    .recipe-card h4 { margin: 22px 0 8px; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; }
+    .recipe-card ul, .recipe-card ol { margin: 0; padding-left: 20px; color: #44534a; font-size: .8rem; line-height: 1.55; }
+    .recipe-card li + li { margin-top: 5px; }
 
     .family-banner { padding: 0 0 130px; }
     .family-shell {
@@ -389,7 +424,7 @@
       top: 0;
       right: 0;
       display: grid;
-      width: min(460px, 100%);
+      width: min(520px, 100%);
       height: 100dvh;
       grid-template-rows: auto 1fr auto;
       transform: translateX(100%);
@@ -400,22 +435,25 @@
     }
     .cart-open .cart-overlay { visibility: visible; opacity: 1; }
     .cart-open .cart-drawer { transform: translateX(0); }
-    .cart-header { display: flex; align-items: center; justify-content: space-between; padding: 24px 26px; border-bottom: 1px solid var(--line); }
-    .cart-header h2 { margin: 0; font-family: var(--serif); font-size: 1.65rem; font-weight: 400; }
-    .close-cart { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line); border-radius: 7px; cursor: pointer; background: transparent; font-size: 1.3rem; }
+    .cart-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 26px; border-bottom: 1px solid var(--line); }
+    .cart-step-label { display: block; margin-bottom: 4px; color: var(--copper-dark); font-size: .66rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+    .cart-header h2 { margin: 0; font-family: var(--serif); font-size: 1.75rem; font-weight: 500; }
+    .close-cart { min-height: 46px; padding: 0 14px; border: 2px solid var(--line); border-radius: 7px; cursor: pointer; color: var(--ink); background: #fff; font-size: .73rem; font-weight: 900; }
     .cart-items { overflow: auto; padding: 10px 26px 30px; }
-    .empty-cart { display: grid; min-height: 60vh; place-items: center; color: var(--muted); text-align: center; }
+    .empty-cart { display: grid; min-height: 55vh; place-items: center; padding: 28px; color: var(--muted); text-align: center; }
     .empty-cart span { display: block; margin-bottom: 12px; color: var(--olive); font-family: var(--serif); font-size: 3rem; }
+    .empty-cart strong { display: block; color: var(--ink); font-family: var(--serif); font-size: 1.8rem; font-weight: 500; }
+    .empty-cart a { margin-top: 22px; }
     .cart-item { display: grid; grid-template-columns: 74px 1fr; gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--line); }
     .cart-thumb { width: 74px; height: 92px; object-fit: cover; border-radius: 6px; background: #eee8dc; }
     .cart-item-top { display: flex; justify-content: space-between; gap: 10px; }
     .cart-item h3 { margin: 2px 0 0; font-family: var(--serif); font-size: 1rem; font-weight: 400; line-height: 1.15; }
     .cart-item small { color: var(--muted); }
-    .remove-item { padding: 0; border: 0; cursor: pointer; color: var(--muted); background: transparent; font-size: 1rem; }
+    .remove-item { min-height: 34px; padding: 0 9px; border: 1px solid var(--line); border-radius: 5px; cursor: pointer; color: #7a342e; background: #fff; font-size: .67rem; font-weight: 900; }
     .cart-item-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
-    .qty-control { display: inline-grid; grid-template-columns: 32px 38px 32px; align-items: center; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-    .qty-control button { height: 32px; border: 0; cursor: pointer; background: transparent; }
-    .qty-control span { text-align: center; font-size: .77rem; font-weight: 800; }
+    .qty-control { display: inline-grid; grid-template-columns: 42px 46px 42px; align-items: center; border: 2px solid var(--line); border-radius: 6px; overflow: hidden; }
+    .qty-control button { height: 42px; border: 0; cursor: pointer; color: var(--ink); background: #fff; font-size: 1.2rem; font-weight: 900; }
+    .qty-control span { text-align: center; font-size: .9rem; font-weight: 900; }
     .line-total { font-family: var(--serif); font-size: 1.05rem; }
     .cart-footer { padding: 22px 26px 26px; border-top: 1px solid var(--line); background: var(--warm); }
     .cart-mode { display: flex; justify-content: space-between; margin-bottom: 11px; color: var(--muted); font-size: .75rem; }
@@ -423,7 +461,8 @@
     .cart-total { display: flex; align-items: end; justify-content: space-between; margin-bottom: 18px; }
     .cart-total span:first-child { font-weight: 800; }
     .cart-total strong { font-family: var(--serif); font-size: 2rem; font-weight: 400; line-height: 1; }
-    .checkout { width: 100%; }
+    .cart-help { margin: 0 0 15px; padding: 12px; border: 1px solid #dacbb8; border-radius: 6px; color: #435047; background: #fff; font-size: .78rem; line-height: 1.45; }
+    .checkout { width: 100%; min-height: 64px; font-size: .88rem; }
     .checkout:disabled { cursor: not-allowed; opacity: .45; transform: none; }
     .cart-disclaimer { margin: 11px 0 0; color: var(--muted); font-size: .67rem; line-height: 1.4; text-align: center; }
 
@@ -449,31 +488,31 @@
     }
     .toast.show { visibility: visible; opacity: 1; transform: translate(-50%, 0); }
 
-    .whatsapp-float {
+    .cart-float {
       position: fixed;
       z-index: 45;
       right: 20px;
       bottom: 20px;
       display: inline-flex;
-      min-height: 54px;
+      min-height: 64px;
       align-items: center;
       gap: 10px;
-      padding: 0 18px;
-      border: 1px solid #1ebd59;
+      padding: 0 20px;
+      border: 2px solid #fff;
       border-radius: 8px;
       color: #fff;
-      background: #25d366;
-      box-shadow: 0 14px 35px rgba(19, 88, 47, .28);
-      font-size: .76rem;
+      background: var(--ink);
+      box-shadow: 0 14px 35px rgba(14, 40, 31, .32);
+      font-size: .8rem;
       font-weight: 900;
-      letter-spacing: .06em;
+      letter-spacing: .03em;
     }
-    .whatsapp-float:hover { background: #1fbd5a; transform: translateY(-2px); }
+    .cart-float:hover { background: var(--ink-deep); transform: translateY(-2px); }
+    .cart-float-count { display: grid; min-width: 28px; height: 28px; padding-inline: 6px; place-items: center; border-radius: 50%; color: #fff; background: var(--copper); }
+    .cart-float-total { padding-left: 10px; border-left: 1px solid rgba(255,255,255,.28); font-family: var(--serif); font-size: 1.05rem; font-weight: 500; }
 
-    .product-actions { display: grid; grid-template-columns: 1fr 52px; gap: 8px; margin-top: 18px; }
-    .product-actions .add-button { width: 52px; min-height: 50px; margin-top: 0; padding: 0; font-size: 1.05rem; }
-    .product-link { width: 100%; min-height: 50px; color: #fff; border-color: var(--ink); background: var(--ink); }
-    .product-link:hover { color: #fff; background: var(--ink-deep); }
+    .product-actions { display: grid; grid-template-columns: 98px 1fr; gap: 9px; margin-top: 18px; }
+    .product-actions .in-cart-note { grid-column: 1 / -1; }
 
     .community { padding: 120px 0; background: #fff; }
     .community-head { display: flex; align-items: end; justify-content: space-between; gap: 50px; margin-bottom: 44px; }
@@ -514,7 +553,7 @@
       .nav-links.open a { padding: 12px 0; border-bottom: 1px solid var(--line); }
       .nav-links.open a:last-child { border-bottom: 0; }
       .hero-content { width: min(620px, 62%); }
-      .product-grid { grid-template-columns: repeat(3, 1fr); }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
       .catalog-head { align-items: start; flex-direction: column; }
       .family-shell { grid-template-columns: 1fr; }
       .family-copy { padding: 64px 56px 24px; }
@@ -523,6 +562,9 @@
       .story-grid { gap: 56px; }
       .food-gallery-head { align-items: start; flex-direction: column; gap: 20px; }
       .community-head { align-items: start; flex-direction: column; gap: 20px; }
+      .recipes-grid { grid-template-columns: 1fr; }
+      .recipe-card { display: grid; grid-template-columns: .8fr 1.2fr; }
+      .recipe-image { height: 100%; min-height: 330px; }
     }
 
     @media (max-width: 760px) {
@@ -531,10 +573,9 @@
       .site-header { height: 68px; }
       .brand-name { font-size: 1rem; }
       .brand-symbol { width: 31px; height: 31px; }
-      .cart-button { width: 44px; padding: 0; }
-      .cart-button > span:first-child { display: none; }
-      .header-whatsapp { width: 44px; padding: 0; }
-      .header-whatsapp .wa-label { display: none; }
+      .cart-button { min-width: 118px; min-height: 46px; padding: 0 11px; }
+      .cart-button .cart-label { font-size: .73rem; }
+      .header-whatsapp { display: none; }
       .header-instagram { display: none; }
       .hero { min-height: 720px; align-items: end; background-position: 67% center; }
       .hero::before { background: linear-gradient(180deg, rgba(255,255,255,.06) 5%, rgba(255,255,255,.52) 43%, rgba(255,255,255,.99) 69%); }
@@ -546,17 +587,22 @@
       .trust-grid { grid-template-columns: 1fr; }
       .trust-item, .trust-item:first-child, .trust-item:last-child { padding: 17px 0; border-right: 0; border-bottom: 1px solid var(--line); }
       .trust-item:last-child { border-bottom: 0; }
+      .buy-steps-grid { grid-template-columns: 1fr; }
       .catalog { padding: 88px 0 96px; }
       .catalog-head { gap: 28px; }
-      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 30px; }
+      .product-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 30px; }
       .product-visual { height: 245px; }
       .product-body { padding: 17px; }
       .product-name { font-size: 1.12rem; }
-      .product-desc { display: none; }
+      .product-desc { display: block; min-height: 0; }
       .price-row { align-items: start; flex-direction: column; margin-top: 17px; }
       .price-compare { min-height: 30px; text-align: left; }
       .price { font-size: 1.48rem; }
-      .add-button { min-height: 48px; padding-inline: 12px; font-size: .73rem; }
+      .add-button { min-height: 54px; padding-inline: 12px; font-size: .78rem; }
+      .recipes { padding: 88px 0; }
+      .recipes-head { align-items: start; flex-direction: column; gap: 20px; }
+      .recipe-card { display: block; }
+      .recipe-image { height: 250px; min-height: 0; }
       .family-banner { padding-bottom: 92px; }
       .family-shell { border-radius: 10px; }
       .family-copy { padding: 50px 26px 20px; }
@@ -584,7 +630,7 @@
       .footer-top { grid-template-columns: 1fr 1fr; gap: 45px 24px; }
       .footer-brand { grid-column: 1 / -1; }
       .footer-bottom { flex-direction: column; }
-      .whatsapp-float { right: 14px; bottom: 14px; }
+      .cart-float { right: 14px; bottom: 14px; left: 14px; justify-content: center; min-height: 60px; }
       .cart-header, .cart-footer { padding-inline: 20px; }
       .cart-items { padding-inline: 20px; }
     }
@@ -592,7 +638,6 @@
     @media (max-width: 430px) {
       .hero-actions { flex-direction: column; }
       .hero-actions .btn { width: 100%; }
-      .product-grid { grid-template-columns: 1fr; }
       .product-visual { height: 360px; }
       .product-desc { display: block; min-height: 0; }
       .price-row { align-items: end; flex-direction: row; }
@@ -618,17 +663,15 @@
 
       <nav class="nav-links" id="mainNav" aria-label="Navegación principal">
         <a href="#productos">Productos</a>
-        <a href="#origen">Origen</a>
-        <a href="#historia">Nuestra esencia</a>
-        <a href="#comunidad">Comunidad</a>
+        <a href="#recetas">Recetas</a>
         <a href="#preguntas">Preguntas</a>
       </nav>
 
       <div class="nav-actions">
         <a class="header-instagram" href="https://www.instagram.com/toromata.pe?igsh=MWR0NTNvaTZ4a2FhdA==&igsi=MWR0NTNvaTZ4a2FhdA==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de TOROMATA"><img class="social-logo" src="assets/instagram.svg" alt=""></a>
         <a class="btn btn-whatsapp header-whatsapp" href="https://wa.me/51950320964?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20TOROMATA." target="_blank" rel="noopener noreferrer" aria-label="Contactar a TOROMATA por WhatsApp"><img class="wa-logo" src="assets/whatsapp.svg" alt=""><span class="wa-label">WHATSAPP</span></a>
-        <button class="cart-button" id="openCart" type="button" aria-label="Abrir carrito">
-          <span>Mi pedido</span>
+        <button class="cart-button" id="openCart" type="button" aria-label="Abrir carrito de compra">
+          <span class="cart-label"><span aria-hidden="true">🛒</span> CARRITO</span>
           <span class="cart-count" id="cartCount">0</span>
         </button>
         <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú" aria-controls="mainNav" aria-expanded="false">≡</button>
@@ -642,12 +685,12 @@
         <div class="hero-content">
           <p class="eyebrow">Acarí, tierra de oliva</p>
           <h1>El sabor de Acarí, <em>en tu mesa.</em></h1>
-          <p class="hero-copy">Aceite de oliva extra virgen TOROMATA para compartir, cocinar y terminar cada plato. Elige tu presentación y pide directo por WhatsApp.</p>
+          <p class="hero-copy">Aceite de oliva extra virgen TOROMATA para compartir, cocinar y terminar cada plato. Comprar es fácil: elige una presentación, agrégala al carrito y envía tu pedido por WhatsApp.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#productos">Ver presentaciones <span aria-hidden="true">↓</span></a>
-            <a class="btn btn-whatsapp" href="https://wa.me/51950320964?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20aceites%20TOROMATA." target="_blank" rel="noopener noreferrer"><img class="wa-logo" src="assets/whatsapp.svg" alt=""> WHATSAPP</a>
+            <a class="btn btn-primary" href="#productos">1. ELEGIR MI ACEITE <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-whatsapp" href="https://wa.me/51950320964?text=Hola%2C%20necesito%20ayuda%20para%20comprar%20aceite%20TOROMATA." target="_blank" rel="noopener noreferrer"><img class="wa-logo" src="assets/whatsapp.svg" alt=""> NECESITO AYUDA</a>
           </div>
-          <p class="hero-note"><span aria-hidden="true">◆</span> Arma tu pedido y coordina disponibilidad, pago y entrega directamente por WhatsApp.</p>
+          <p class="hero-note"><span aria-hidden="true">◆</span> No se realiza ningún pago en esta página. Tu pedido se confirma directamente por WhatsApp.</p>
         </div>
       </div>
     </section>
@@ -661,13 +704,26 @@
       </div>
     </section>
 
+    <section class="buy-steps" aria-labelledby="buy-steps-title">
+      <div class="container">
+        <div class="buy-steps-head"><strong id="buy-steps-title">¿Cómo comprar? Solo sigue estos 3 pasos.</strong><span>El carrito estará siempre visible para que no pierdas tu pedido.</span></div>
+        <div class="buy-steps-grid">
+          <div class="buy-step"><span class="buy-step-number">1</span><div><strong>Elige el tamaño y la cantidad</strong><span>Busca la presentación que deseas y selecciona cuántas unidades quieres.</span></div></div>
+          <div class="buy-step"><span class="buy-step-number">2</span><div><strong>Presiona “Agregar al carrito”</strong><span>Se abrirá tu carrito para que revises el producto y el total.</span></div></div>
+          <div class="buy-step"><span class="buy-step-number">3</span><div><strong>Envía el pedido por WhatsApp</strong><span>TOROMATA confirmará disponibilidad, pago y entrega contigo.</span></div></div>
+        </div>
+      </div>
+    </section>
+
     <section class="catalog" id="productos">
       <div class="container">
         <div class="catalog-head reveal">
           <div>
-            <p class="eyebrow">Elige tu medida</p>
-            <h2 class="section-title">Una presentación para cada mesa.</h2>
+            <p class="eyebrow">Paso 1 · Elige tu aceite</p>
+            <h2 class="section-title">Selecciona tamaño y cantidad.</h2>
+            <p class="section-lead">Después presiona el botón <strong>“AGREGAR AL CARRITO”</strong>. El carrito se abrirá automáticamente para que puedas revisar tu compra.</p>
           </div>
+          <button class="btn catalog-cart-cta" id="catalogCart" type="button">🛒 VER MI CARRITO (<span id="catalogCartCount">0</span>)</button>
         </div>
 
         <div class="product-grid">
@@ -678,7 +734,7 @@
               <h3 class="product-name">Extra virgen 200 ml</h3>
               <p class="product-desc">Compacto y práctico para probar, regalar o llevar.</p>
               <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 18.46</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
-              <div class="product-actions"><a class="btn product-link" href="producto.html?id=200">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 200 ml al pedido">＋</button></div>
+              <div class="product-actions"><label><span class="product-buy-label">Cantidad</span><select class="product-quantity" aria-label="Cantidad de aceite de 200 ml"><option value="1">1 unidad</option><option value="2">2 unidades</option><option value="3">3 unidades</option><option value="4">4 unidades</option><option value="5">5 unidades</option><option value="6">6 unidades</option><option value="7">7 unidades</option><option value="8">8 unidades</option><option value="9">9 unidades</option><option value="10">10 unidades</option><option value="11">11 unidades</option><option value="12">12 unidades</option></select></label><button class="btn btn-primary add-button" type="button"><span aria-hidden="true">🛒</span> AGREGAR AL CARRITO</button><p class="in-cart-note">En tu carrito: <strong class="card-cart-qty">0 unidades</strong></p></div>
             </div>
           </article>
 
@@ -689,7 +745,7 @@
               <h3 class="product-name">Extra virgen 250 ml</h3>
               <p class="product-desc">Una medida versátil para el uso diario y los detalles.</p>
               <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 20.17</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
-              <div class="product-actions"><a class="btn product-link" href="producto.html?id=250">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 250 ml al pedido">＋</button></div>
+              <div class="product-actions"><label><span class="product-buy-label">Cantidad</span><select class="product-quantity" aria-label="Cantidad de aceite de 250 ml"><option value="1">1 unidad</option><option value="2">2 unidades</option><option value="3">3 unidades</option><option value="4">4 unidades</option><option value="5">5 unidades</option><option value="6">6 unidades</option><option value="7">7 unidades</option><option value="8">8 unidades</option><option value="9">9 unidades</option><option value="10">10 unidades</option><option value="11">11 unidades</option><option value="12">12 unidades</option></select></label><button class="btn btn-primary add-button" type="button"><span aria-hidden="true">🛒</span> AGREGAR AL CARRITO</button><p class="in-cart-note">En tu carrito: <strong class="card-cart-qty">0 unidades</strong></p></div>
             </div>
           </article>
 
@@ -700,7 +756,7 @@
               <h3 class="product-name">Extra virgen 500 ml</h3>
               <p class="product-desc">El punto medio ideal para tener siempre a la mano.</p>
               <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 29.77</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
-              <div class="product-actions"><a class="btn product-link" href="producto.html?id=500">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 500 ml al pedido">＋</button></div>
+              <div class="product-actions"><label><span class="product-buy-label">Cantidad</span><select class="product-quantity" aria-label="Cantidad de aceite de 500 ml"><option value="1">1 unidad</option><option value="2">2 unidades</option><option value="3">3 unidades</option><option value="4">4 unidades</option><option value="5">5 unidades</option><option value="6">6 unidades</option><option value="7">7 unidades</option><option value="8">8 unidades</option><option value="9">9 unidades</option><option value="10">10 unidades</option><option value="11">11 unidades</option><option value="12">12 unidades</option></select></label><button class="btn btn-primary add-button" type="button"><span aria-hidden="true">🛒</span> AGREGAR AL CARRITO</button><p class="in-cart-note">En tu carrito: <strong class="card-cart-qty">0 unidades</strong></p></div>
             </div>
           </article>
 
@@ -711,7 +767,7 @@
               <h3 class="product-name">Extra virgen 750 ml</h3>
               <p class="product-desc">Generoso para cocinas activas y mesas compartidas.</p>
               <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 45.75</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
-              <div class="product-actions"><a class="btn product-link" href="producto.html?id=750">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 750 ml al pedido">＋</button></div>
+              <div class="product-actions"><label><span class="product-buy-label">Cantidad</span><select class="product-quantity" aria-label="Cantidad de aceite de 750 ml"><option value="1">1 unidad</option><option value="2">2 unidades</option><option value="3">3 unidades</option><option value="4">4 unidades</option><option value="5">5 unidades</option><option value="6">6 unidades</option><option value="7">7 unidades</option><option value="8">8 unidades</option><option value="9">9 unidades</option><option value="10">10 unidades</option><option value="11">11 unidades</option><option value="12">12 unidades</option></select></label><button class="btn btn-primary add-button" type="button"><span aria-hidden="true">🛒</span> AGREGAR AL CARRITO</button><p class="in-cart-note">En tu carrito: <strong class="card-cart-qty">0 unidades</strong></p></div>
             </div>
           </article>
 
@@ -722,7 +778,7 @@
               <h3 class="product-name">Extra virgen 1 litro</h3>
               <p class="product-desc">Más aceite para quienes lo convierten en un esencial.</p>
               <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 60.98</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
-              <div class="product-actions"><a class="btn product-link" href="producto.html?id=1000">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 1 litro al pedido">＋</button></div>
+              <div class="product-actions"><label><span class="product-buy-label">Cantidad</span><select class="product-quantity" aria-label="Cantidad de aceite de 1 litro"><option value="1">1 unidad</option><option value="2">2 unidades</option><option value="3">3 unidades</option><option value="4">4 unidades</option><option value="5">5 unidades</option><option value="6">6 unidades</option><option value="7">7 unidades</option><option value="8">8 unidades</option><option value="9">9 unidades</option><option value="10">10 unidades</option><option value="11">11 unidades</option><option value="12">12 unidades</option></select></label><button class="btn btn-primary add-button" type="button"><span aria-hidden="true">🛒</span> AGREGAR AL CARRITO</button><p class="in-cart-note">En tu carrito: <strong class="card-cart-qty">0 unidades</strong></p></div>
             </div>
           </article>
 
@@ -733,7 +789,7 @@
               <h3 class="product-name">Extra virgen 3 litros</h3>
               <p class="product-desc">Rendimiento para familias, negocios y cocinas exigentes.</p>
               <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 139.17</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
-              <div class="product-actions"><a class="btn product-link" href="producto.html?id=3000">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 3 litros al pedido">＋</button></div>
+              <div class="product-actions"><label><span class="product-buy-label">Cantidad</span><select class="product-quantity" aria-label="Cantidad de aceite de 3 litros"><option value="1">1 unidad</option><option value="2">2 unidades</option><option value="3">3 unidades</option><option value="4">4 unidades</option><option value="5">5 unidades</option><option value="6">6 unidades</option><option value="7">7 unidades</option><option value="8">8 unidades</option><option value="9">9 unidades</option><option value="10">10 unidades</option><option value="11">11 unidades</option><option value="12">12 unidades</option></select></label><button class="btn btn-primary add-button" type="button"><span aria-hidden="true">🛒</span> AGREGAR AL CARRITO</button><p class="in-cart-note">En tu carrito: <strong class="card-cart-qty">0 unidades</strong></p></div>
             </div>
           </article>
 
@@ -744,8 +800,31 @@
               <h3 class="product-name">Extra virgen 4 litros</h3>
               <p class="product-desc">La presentación más amplia de nuestra línea TOROMATA.</p>
               <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 182.83</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
-              <div class="product-actions"><a class="btn product-link" href="producto.html?id=4000">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 4 litros al pedido">＋</button></div>
+              <div class="product-actions"><label><span class="product-buy-label">Cantidad</span><select class="product-quantity" aria-label="Cantidad de aceite de 4 litros"><option value="1">1 unidad</option><option value="2">2 unidades</option><option value="3">3 unidades</option><option value="4">4 unidades</option><option value="5">5 unidades</option><option value="6">6 unidades</option><option value="7">7 unidades</option><option value="8">8 unidades</option><option value="9">9 unidades</option><option value="10">10 unidades</option><option value="11">11 unidades</option><option value="12">12 unidades</option></select></label><button class="btn btn-primary add-button" type="button"><span aria-hidden="true">🛒</span> AGREGAR AL CARRITO</button><p class="in-cart-note">En tu carrito: <strong class="card-cart-qty">0 unidades</strong></p></div>
             </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="recipes" id="recetas" aria-labelledby="recipes-title">
+      <div class="container">
+        <div class="recipes-head reveal">
+          <div><p class="eyebrow">Ideas para tu mesa</p><h2 class="section-title" id="recipes-title">Recetas fáciles con TOROMATA.</h2></div>
+          <p class="section-lead">Tres preparaciones sencillas para disfrutar el aceite de oliva extra virgen. Más adelante iremos agregando nuevas recetas.</p>
+        </div>
+        <div class="recipes-grid">
+          <article class="recipe-card reveal">
+            <div class="recipe-image"><img src="assets/toromata-pan-mesa.webp" alt="Pan tostado con tomate, queso y aceite de oliva TOROMATA" loading="lazy"></div>
+            <div class="recipe-body"><span class="recipe-time">10 minutos · Fácil</span><h3>Pan con tomate y queso fresco</h3><p class="recipe-intro">Una entrada rápida, fresca y generosa para compartir.</p><h4>Ingredientes</h4><ul><li>4 rebanadas de pan</li><li>2 tomates maduros</li><li>150 g de queso fresco</li><li>2 cucharadas de TOROMATA y sal</li></ul><h4>Preparación</h4><ol><li>Tuesta ligeramente el pan.</li><li>Agrega tomate picado y queso fresco.</li><li>Termina con TOROMATA y una pizca de sal.</li></ol></div>
+          </article>
+          <article class="recipe-card reveal">
+            <div class="recipe-image"><img src="assets/toromata-vegetales.webp" alt="Vegetales asados con hierbas y aceite de oliva TOROMATA" loading="lazy"></div>
+            <div class="recipe-body"><span class="recipe-time">35 minutos · Fácil</span><h3>Vegetales asados con hierbas</h3><p class="recipe-intro">Color, aroma y una textura dorada para acompañar cualquier comida.</p><h4>Ingredientes</h4><ul><li>1 zucchini y 1 pimiento</li><li>1 cebolla roja</li><li>3 cucharadas de TOROMATA</li><li>Romero, sal y pimienta</li></ul><h4>Preparación</h4><ol><li>Corta los vegetales en trozos similares.</li><li>Mezcla con TOROMATA, romero, sal y pimienta.</li><li>Hornea a 200 °C durante 25 minutos.</li></ol></div>
+          </article>
+          <article class="recipe-card reveal">
+            <div class="recipe-image"><img src="assets/toromata-mesa.webp" alt="Ensalada fresca con aceitunas, queso y aceite de oliva TOROMATA" loading="lazy"></div>
+            <div class="recipe-body"><span class="recipe-time">15 minutos · Fácil</span><h3>Ensalada fresca con aceitunas</h3><p class="recipe-intro">Una combinación ligera para almuerzos y cenas.</p><h4>Ingredientes</h4><ul><li>2 tomates y 1 pepino</li><li>½ cebolla roja</li><li>Aceitunas y queso fresco</li><li>TOROMATA, limón y sal</li></ul><h4>Preparación</h4><ol><li>Corta los vegetales y colócalos en una fuente.</li><li>Agrega aceitunas y queso fresco.</li><li>Aliña con limón, sal y abundante TOROMATA.</li></ol></div>
           </article>
         </div>
       </div>
@@ -847,9 +926,9 @@
         </div>
         <div class="faq-list reveal">
           <details><summary>¿Dónde realizo la compra?</summary><p>Todos los pedidos se solicitan exclusivamente por WhatsApp al +51 950 320 964. La web prepara el detalle de productos, cantidades y total para enviarlo directamente a ese número.</p></details>
-          <details><summary>¿Cómo se confirma mi pedido?</summary><p>Agrega los productos al carrito y pulsa “WHATSAPP · ENVIAR PEDIDO”. Se generará un resumen con cantidades, precios y total para coordinar disponibilidad, pago y entrega.</p></details>
+          <details><summary>¿Cómo se confirma mi pedido?</summary><p>Elige tamaño y cantidad, presiona “AGREGAR AL CARRITO” y revisa tu compra. Luego pulsa “ENVIAR MI PEDIDO POR WHATSAPP”. TOROMATA recibirá el resumen y coordinará contigo la disponibilidad, el pago y la entrega.</p></details>
           <details><summary>¿El precio incluye el envío?</summary><p>Los precios mostrados corresponden al producto. El costo de entrega se coordina según el destino y el volumen total del pedido.</p></details>
-          <details><summary>¿Dónde veo el detalle de cada presentación?</summary><p>Pulsa “Ver producto” en cualquier presentación para consultar su precio, tamaño, usos sugeridos y pedir la cantidad que necesitas por WhatsApp.</p></details>
+          <details><summary>¿Cómo cambio la cantidad o quito un producto?</summary><p>Abre el botón “CARRITO”. Dentro podrás usar los botones − y + para cambiar la cantidad, o presionar “QUITAR” para eliminar un producto.</p></details>
           <details><summary>¿Puedo combinar diferentes presentaciones?</summary><p>Sí. Puedes incluir distintos tamaños y cantidades en el mismo pedido antes de enviarlo por WhatsApp.</p></details>
         </div>
       </div>
@@ -857,8 +936,8 @@
 
     <section class="cta">
       <div class="container cta-box reveal">
-        <div><h2>¿Listo para llevar TOROMATA a tu mesa?</h2><p>Elige tu presentación y arma tu pedido en pocos pasos.</p></div>
-        <a class="btn" href="#productos">Empezar mi pedido <span aria-hidden="true">↑</span></a>
+        <div><h2>¿Listo para llevar TOROMATA a tu mesa?</h2><p>Empieza eligiendo el tamaño y la cantidad. Nosotros te ayudamos con el resto por WhatsApp.</p></div>
+        <a class="btn" href="#productos">1. ELEGIR MI ACEITE <span aria-hidden="true">↑</span></a>
       </div>
     </section>
   </main>
@@ -870,23 +949,24 @@
           <a class="brand" href="#inicio"><span class="brand-symbol" aria-hidden="true">ᴠ</span><span class="brand-name">TOROMATA</span></a>
           <p>Aceite de oliva extra virgen en presentaciones para tu mesa, tu negocio y cada ocasión.</p>
         </div>
-        <div class="footer-col"><h3>Explorar</h3><a href="#productos">Productos</a><a href="#origen">Origen Acarí</a><a href="#historia">Nuestra esencia</a><a href="#comunidad">Reseñas y comunidad</a></div>
-        <div class="footer-col"><h3>Contacto</h3><a class="footer-social" href="https://www.instagram.com/toromata.pe?igsh=MWR0NTNvaTZ4a2FhdA==&igsi=MWR0NTNvaTZ4a2FhdA==" target="_blank" rel="noopener noreferrer"><img class="social-logo" src="assets/instagram.svg" alt=""> @toromata.pe</a><button class="btn btn-secondary" id="footerCart" type="button">Ver mi pedido</button></div>
+        <div class="footer-col"><h3>Explorar</h3><a href="#productos">Comprar aceite</a><a href="#recetas">Recetas</a><a href="#preguntas">Preguntas frecuentes</a><a href="#comunidad">Reseñas y comunidad</a></div>
+        <div class="footer-col"><h3>Contacto</h3><a class="footer-social" href="https://www.instagram.com/toromata.pe?igsh=MWR0NTNvaTZ4a2FhdA==&igsi=MWR0NTNvaTZ4a2FhdA==" target="_blank" rel="noopener noreferrer"><img class="social-logo" src="assets/instagram.svg" alt=""> @toromata.pe</a><button class="btn btn-secondary" id="footerCart" type="button">🛒 ABRIR MI CARRITO</button></div>
       </div>
       <div class="footer-bottom"><span>© <span id="year"></span> TOROMATA. Todos los derechos reservados.</span><span>Acarí, tierra de oliva.</span></div>
     </div>
   </footer>
 
-  <a class="whatsapp-float" href="https://wa.me/51950320964?text=Hola%2C%20quiero%20hacer%20un%20pedido%20de%20TOROMATA." target="_blank" rel="noopener noreferrer" aria-label="Comprar TOROMATA por WhatsApp"><img class="wa-logo" src="assets/whatsapp.svg" alt=""> WHATSAPP</a>
+  <button class="cart-float" id="floatingCart" type="button" aria-label="Abrir carrito de compra"><span aria-hidden="true">🛒</span> VER CARRITO <span class="cart-float-count" id="floatingCartCount">0</span><strong class="cart-float-total" id="floatingCartTotal">S/ 0.00</strong></button>
 
   <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
   <aside class="cart-drawer" id="cartDrawer" aria-labelledby="cartTitle" aria-hidden="true">
-    <div class="cart-header"><h2 id="cartTitle">Tu pedido</h2><button class="close-cart" id="closeCart" type="button" aria-label="Cerrar carrito">×</button></div>
+    <div class="cart-header"><div><span class="cart-step-label">Paso 2 de 3 · Revisa tu compra</span><h2 id="cartTitle">Mi carrito de compra</h2></div><button class="close-cart" id="closeCart" type="button">← SEGUIR COMPRANDO</button></div>
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-footer">
+      <p class="cart-help"><strong>Revisa tu pedido:</strong> usa los botones − y + para cambiar cantidades. Cuando todo esté correcto, envíalo por WhatsApp.</p>
       <div class="cart-mode"><span>Canal de compra</span><strong id="cartMode">WhatsApp</strong></div>
       <div class="cart-total"><span>Total estimado</span><strong id="cartTotal">S/ 0.00</strong></div>
-      <button class="btn btn-whatsapp checkout" id="checkout" type="button" disabled><img class="wa-logo" src="assets/whatsapp.svg" alt=""> WHATSAPP · ENVIAR PEDIDO</button>
+      <button class="btn btn-whatsapp checkout" id="checkout" type="button" disabled><img class="wa-logo" src="assets/whatsapp.svg" alt=""> 3. ENVIAR MI PEDIDO POR WHATSAPP</button>
       <p class="cart-disclaimer">La disponibilidad, el pago y el costo de entrega se confirman al coordinar el pedido.</p>
     </div>
   </aside>
@@ -916,6 +996,9 @@
         overlay: document.getElementById('cartOverlay'),
         toast: document.getElementById('toast'),
         toastText: document.getElementById('toastText'),
+        floatingCartCount: document.getElementById('floatingCartCount'),
+        floatingCartTotal: document.getElementById('floatingCartTotal'),
+        catalogCartCount: document.getElementById('catalogCartCount'),
         menu: document.getElementById('mainNav'),
         menuButton: document.getElementById('menuButton')
       };
@@ -926,16 +1009,18 @@
       const money = value => `S/ ${value.toFixed(2)}`;
       const unitPrice = product => product.regular;
 
-      function addToCart(id, button) {
-        cart.set(id, cart.has(id) ? cart.get(id) + 1 : 1);
+      function addToCart(id, button, quantity) {
+        const amount = Math.max(1, Number(quantity) || 1);
+        cart.set(id, cart.has(id) ? cart.get(id) + amount : amount);
         updateCart();
-        showToast('Producto agregado al pedido');
+        showToast(`${amount} ${amount === 1 ? 'unidad agregada' : 'unidades agregadas'} al carrito`);
         if (button) {
           const original = button.innerHTML;
           button.classList.add('added');
-          button.innerHTML = 'Agregado <span aria-hidden="true">✓</span>';
-          setTimeout(() => { button.classList.remove('added'); button.innerHTML = original; }, 1000);
+          button.innerHTML = '✓ AGREGADO AL CARRITO';
+          setTimeout(() => { button.classList.remove('added'); button.innerHTML = original; }, 1300);
         }
+        openCart();
       }
 
       function changeQty(id, direction) {
@@ -955,11 +1040,18 @@
         const total = entries.reduce((sum, [id, qty]) => sum + unitPrice(products.get(id)) * qty, 0);
         els.cartCount.textContent = count;
         els.cartTotal.textContent = money(total);
+        els.floatingCartCount.textContent = count;
+        els.floatingCartTotal.textContent = money(total);
+        els.catalogCartCount.textContent = count;
         els.cartMode.textContent = 'WhatsApp · +51 950 320 964';
         els.checkout.disabled = entries.length === 0;
+        cards.forEach(card => {
+          const qty = cart.get(card.dataset.id) || 0;
+          card.querySelector('.card-cart-qty').textContent = `${qty} ${qty === 1 ? 'unidad' : 'unidades'}`;
+        });
 
         if (!entries.length) {
-          els.cartItems.innerHTML = '<div class="empty-cart"><div><span>◌</span><strong>Tu pedido está vacío</strong><br><small>Elige una presentación para comenzar.</small></div></div>';
+          els.cartItems.innerHTML = '<div class="empty-cart"><div><span aria-hidden="true">🛒</span><strong>Tu carrito está vacío</strong><p>Primero elige una presentación y presiona “AGREGAR AL CARRITO”.</p><a class="btn btn-primary empty-shop-link" href="#productos">1. ELEGIR MI ACEITE</a></div></div>';
           return;
         }
 
@@ -968,8 +1060,8 @@
           return `<article class="cart-item" data-cart-id="${id}">
             <img class="cart-thumb" src="${product.image}" alt="${product.name}">
             <div>
-              <div class="cart-item-top"><div><h3>${product.name}</h3><small>${money(unitPrice(product))} c/u</small></div><button class="remove-item" type="button" data-action="remove" aria-label="Quitar ${product.name}">×</button></div>
-              <div class="cart-item-bottom"><div class="qty-control"><button type="button" data-action="minus" aria-label="Disminuir cantidad">−</button><span>${qty}</span><button type="button" data-action="plus" aria-label="Aumentar cantidad">＋</button></div><span class="line-total">${money(unitPrice(product) * qty)}</span></div>
+              <div class="cart-item-top"><div><h3>${product.name}</h3><small>${money(unitPrice(product))} cada unidad</small></div><button class="remove-item" type="button" data-action="remove" aria-label="Quitar ${product.name}">QUITAR</button></div>
+              <div class="cart-item-bottom"><div class="qty-control"><button type="button" data-action="minus" aria-label="Disminuir cantidad de ${product.name}">−</button><span aria-label="Cantidad: ${qty}">${qty}</span><button type="button" data-action="plus" aria-label="Aumentar cantidad de ${product.name}">＋</button></div><span class="line-total">${money(unitPrice(product) * qty)}</span></div>
             </div>
           </article>`;
         }).join('');
@@ -1017,13 +1109,23 @@
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
       }
 
-      cards.forEach(card => card.querySelector('.add-button').addEventListener('click', event => addToCart(card.dataset.id, event.currentTarget)));
+      cards.forEach(card => card.querySelector('.add-button').addEventListener('click', event => {
+        const quantity = card.querySelector('.product-quantity');
+        addToCart(card.dataset.id, event.currentTarget, quantity.value);
+        quantity.value = '1';
+      }));
       document.getElementById('openCart').addEventListener('click', openCart);
+      document.getElementById('floatingCart').addEventListener('click', openCart);
+      document.getElementById('catalogCart').addEventListener('click', openCart);
       document.getElementById('footerCart').addEventListener('click', openCart);
       document.getElementById('closeCart').addEventListener('click', closeCart);
       els.overlay.addEventListener('click', closeCart);
       els.checkout.addEventListener('click', checkout);
       els.cartItems.addEventListener('click', event => {
+        if (event.target.closest('.empty-shop-link')) {
+          closeCart();
+          return;
+        }
         const action = event.target.dataset.action;
         if (!action) return;
         const item = event.target.closest('[data-cart-id]');

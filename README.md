@@ -7,11 +7,11 @@ Sitio web comercial de TOROMATA, aceite de oliva extra virgen de Acarí, Perú.
 El sitio es estático y está preparado para publicarse directamente con GitHub Pages.
 
 - Página principal: `index.html`
-- Página de producto: `producto.html`
 - Imágenes e iconos: `assets/`
+- Catálogo, carrito y recetas: `index.html`
 - Pedidos: WhatsApp `+51 950 320 964`
 - Instagram: [@toromata.pe](https://www.instagram.com/toromata.pe/)
 
 ## Uso local
 
-Abre `index.html` en un navegador. No requiere instalación ni dependencias.
+Abre `index.html` en un navegador. No requiere instalación ni dependencias. La compra se organiza en un carrito y se confirma por WhatsApp.
