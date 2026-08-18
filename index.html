@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TOROMATA — Aceite de oliva extra virgen de Acarí en presentaciones de 200 ml a 4 litros. Arma tu pedido y solicítalo por WhatsApp.">
+  <meta name="theme-color" content="#293417">
+  <title>TOROMATA | Acarí, tierra de oliva</title>
+  <style>
+    :root {
+      --ink: #35401d;
+      --ink-deep: #202812;
+      --cream: #ffffff;
+      --paper: #ffffff;
+      --warm: #f7f3ea;
+      --olive: #657335;
+      --olive-soft: #d9d3a8;
+      --copper: #a37439;
+      --copper-dark: #76501f;
+      --line: rgba(53, 64, 29, .18);
+      --muted: #6c6a5d;
+      --shadow: 0 18px 55px rgba(40, 48, 24, .13);
+      --radius: 12px;
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body.cart-open { overflow: hidden; }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; }
+    img { display: block; max-width: 100%; }
+    figure { margin: 0; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 3px solid #d39a6d; outline-offset: 4px; }
+
+    .container { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--copper-dark);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+    .section-title {
+      max-width: 760px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 4.9rem);
+      font-weight: 500;
+      letter-spacing: -.045em;
+      line-height: .98;
+    }
+    .section-lead { max-width: 620px; margin: 22px 0 0; color: var(--muted); font-size: 1.03rem; }
+
+    .promo-bar {
+      position: relative;
+      z-index: 30;
+      padding: 8px 20px;
+      color: #f8f4e9;
+      background: var(--ink-deep);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 25;
+      height: 76px;
+      border-bottom: 1px solid rgba(23, 56, 44, .09);
+      background: rgba(255, 255, 255, .93);
+      backdrop-filter: blur(16px);
+    }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; }
+    .brand-symbol {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid rgba(173, 99, 55, .5);
+      overflow: hidden;
+      border: 0;
+      border-radius: 50%;
+      color: transparent;
+      background: #f6edda url('assets/toromata-sello.webp') center / cover no-repeat;
+      font-family: var(--serif);
+      font-size: 0;
+      line-height: 1;
+    }
+    .brand-name { font-family: var(--serif); font-size: 1.18rem; letter-spacing: .13em; line-height: 1; }
+    .brand-name::after { display: block; margin-top: 5px; content: 'ACARÍ, TIERRA DE OLIVA'; font-family: var(--sans); font-size: .43rem; font-weight: 800; letter-spacing: .17em; }
+    .nav-links { display: flex; align-items: center; gap: 27px; font-size: .8rem; font-weight: 700; }
+    .nav-links a { position: relative; }
+    .nav-links a::after {
+      position: absolute;
+      bottom: -7px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      content: '';
+      background: var(--copper);
+      transition: width .25s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .cart-button, .menu-button {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      cursor: pointer;
+      background: transparent;
+    }
+    .cart-button {
+      gap: 9px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      font-size: .82rem;
+      font-weight: 800;
+    }
+    .cart-count {
+      display: grid;
+      min-width: 22px;
+      height: 22px;
+      padding-inline: 5px;
+      place-items: center;
+      border-radius: 999px;
+      color: white;
+      background: var(--copper);
+      font-size: .7rem;
+    }
+    .menu-button { display: none; width: 44px; border: 1px solid var(--line); border-radius: 7px; font-size: 1.35rem; }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: min(780px, calc(100svh - 108px));
+      align-items: center;
+      overflow: hidden;
+      background: #ddd6c7 url('assets/toromata-hero-lifestyle.webp') center center / cover no-repeat;
+      isolation: isolate;
+    }
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      content: '';
+      background: linear-gradient(90deg, rgba(255, 255, 255, .99) 0%, rgba(255, 255, 255, .94) 27%, rgba(255, 255, 255, .52) 45%, rgba(255, 255, 255, .08) 66%, transparent 78%);
+    }
+    .hero-content { width: min(590px, 52%); padding-block: 86px 100px; }
+    .hero h1 {
+      max-width: 640px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(4.2rem, 8.5vw, 7.4rem);
+      font-weight: 400;
+      letter-spacing: -.065em;
+      line-height: .84;
+    }
+    .hero h1 em { display: block; color: var(--copper); font-weight: 400; }
+    .hero-copy { max-width: 500px; margin: 28px 0 0; color: #415348; font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .btn {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      padding: 0 24px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .03em;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #fff; background: var(--ink); }
+    .btn-primary:hover { background: var(--ink-deep); }
+    .btn-secondary { border-color: var(--line); background: rgba(255, 253, 248, .6); }
+    .btn-secondary:hover { border-color: rgba(23, 56, 44, .36); background: var(--paper); }
+    .btn-whatsapp { color: #fff; border-color: #1fb85a; background: #25d366; box-shadow: 0 9px 24px rgba(37, 211, 102, .22); }
+    .btn-whatsapp:hover { color: #fff; border-color: #159447; background: #1fbd5a; }
+    .wa-logo { width: 21px; height: 21px; object-fit: contain; }
+    .social-logo { width: 19px; height: 19px; object-fit: contain; }
+    .header-whatsapp { min-height: 44px; padding: 0 15px; }
+    .header-instagram { display: inline-grid; width: 44px; height: 44px; place-items: center; border-radius: 7px; background: var(--ink); }
+    .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 28px; color: #5b675f; font-size: .77rem; }
+    .hero-note span:first-child { color: var(--copper); font-size: 1rem; }
+
+    .trust-strip { border-bottom: 1px solid var(--line); background: var(--paper); }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .trust-item { display: flex; align-items: center; gap: 14px; padding: 24px 34px; border-right: 1px solid var(--line); }
+    .trust-item:first-child { padding-left: 0; }
+    .trust-item:last-child { padding-right: 0; border-right: 0; }
+    .trust-icon { display: grid; width: 44px; height: 44px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: var(--warm); }
+    .trust-icon img { width: 21px; height: 21px; }
+    .trust-icon.is-whatsapp { background: #25d366; }
+    .trust-icon.is-whatsapp img { width: 23px; height: 23px; }
+    .trust-item strong { display: block; font-size: .84rem; }
+    .trust-item small { display: block; margin-top: 2px; color: var(--muted); font-size: .74rem; }
+
+    .catalog { padding: 120px 0 130px; background: #fff; }
+    .catalog-head { display: flex; align-items: end; justify-content: space-between; gap: 36px; }
+    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 42px; }
+    .product-card {
+      position: relative;
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(23, 56, 44, .1);
+      border-radius: var(--radius);
+      background: var(--paper);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .product-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+    .product-visual { position: relative; height: 310px; overflow: hidden; background: #eee7db; }
+    .product-visual::after {
+      position: absolute;
+      inset: auto 0 0;
+      height: 30%;
+      content: '';
+      background: linear-gradient(transparent, rgba(14, 40, 31, .06));
+      pointer-events: none;
+    }
+    .product-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center 52%; transition: transform .6s ease; }
+    .product-card:hover .product-visual img { transform: scale(1.035); }
+    .product-size {
+      position: absolute;
+      z-index: 2;
+      top: 16px;
+      left: 16px;
+      padding: 7px 11px;
+      border: 1px solid rgba(255, 255, 255, .6);
+      border-radius: 6px;
+      color: var(--ink);
+      background: rgba(255, 253, 248, .86);
+      backdrop-filter: blur(8px);
+      font-size: .69rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .product-body { display: flex; flex: 1; flex-direction: column; padding: 22px; }
+    .product-kicker { margin: 0 0 7px; color: var(--olive); font-size: .67rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .product-name { margin: 0; font-family: var(--serif); font-size: 1.35rem; font-weight: 500; line-height: 1.06; }
+    .product-desc { min-height: 42px; margin: 11px 0 0; color: var(--muted); font-size: .78rem; line-height: 1.5; }
+    .price-row { display: flex; align-items: end; justify-content: space-between; gap: 10px; margin-top: 22px; }
+    .price-label { display: block; margin-bottom: 2px; color: var(--muted); font-size: .64rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .price { font-family: var(--serif); font-size: 1.72rem; line-height: 1; }
+    .price-compare { color: var(--muted); font-size: .7rem; line-height: 1.35; text-align: right; }
+    .price-compare strong { display: block; color: var(--copper-dark); font-size: .78rem; }
+    .add-button { width: 100%; margin-top: 18px; }
+    .add-button.added { background: var(--copper); }
+
+    .family-banner { padding: 0 0 130px; }
+    .family-shell {
+      position: relative;
+      display: grid;
+      min-height: 590px;
+      overflow: hidden;
+      grid-template-columns: 44% 56%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--ink);
+      background: #fff;
+    }
+    .family-copy { z-index: 2; align-self: center; padding: 70px 32px 70px 70px; }
+    .family-copy .eyebrow { color: var(--copper-dark); }
+    .family-copy h2 { margin: 0; font-family: var(--serif); font-size: clamp(2.7rem, 5vw, 4.9rem); font-weight: 400; letter-spacing: -.05em; line-height: .95; }
+    .family-copy p { max-width: 460px; margin: 24px 0 0; color: var(--muted); }
+    .family-copy .btn { margin-top: 30px; color: white; background: var(--ink); }
+    .family-image { position: relative; display: grid; min-height: 500px; place-items: center; padding: 44px; background: var(--warm); }
+    .family-image::after { display: none; }
+    .family-image img { width: min(100%, 540px); height: auto; object-fit: contain; }
+
+    .story { padding: 130px 0; background: var(--paper); }
+    .story-grid { display: grid; align-items: center; grid-template-columns: 1.05fr .95fr; gap: 90px; }
+    .story-photo { position: relative; overflow: hidden; aspect-ratio: 4 / 4.3; border-radius: 9px; }
+    .story-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 53% center; }
+    .story-photo::after { position: absolute; inset: 0; content: ''; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); border-radius: inherit; }
+    .story-content h2 { margin: 0; font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 5.2rem); font-weight: 400; letter-spacing: -.055em; line-height: .95; }
+    .story-content > p { margin: 26px 0 0; color: var(--muted); }
+    .story-list { display: grid; gap: 0; margin-top: 34px; border-top: 1px solid var(--line); }
+    .story-point { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .story-index { color: var(--copper); font-family: var(--serif); font-size: 1.25rem; }
+    .story-point strong { display: block; font-size: .9rem; }
+    .story-point span:last-child { display: block; margin-top: 3px; color: var(--muted); font-size: .79rem; }
+
+    .food-gallery { padding: 120px 0; background: var(--warm); }
+    .food-gallery-head { display: flex; align-items: end; justify-content: space-between; gap: 50px; margin-bottom: 44px; }
+    .food-gallery-head .section-lead { margin-bottom: 4px; }
+    .food-grid { display: grid; grid-template-columns: 1.15fr .85fr; grid-template-rows: repeat(2, 310px); gap: 14px; }
+    .food-shot { position: relative; overflow: hidden; border-radius: 8px; background: #e8e2d7; }
+    .food-shot:first-child { grid-row: 1 / 3; }
+    .food-shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; }
+    .food-shot:hover img { transform: scale(1.025); }
+    .food-shot:first-child img { object-position: center; }
+    .food-caption { position: absolute; right: 16px; bottom: 16px; left: 16px; padding: 12px 14px; color: #fff; background: rgba(20, 30, 13, .68); backdrop-filter: blur(8px); font-size: .75rem; font-weight: 800; letter-spacing: .04em; }
+
+    .uses { padding: 120px 0; color: #f7f3e9; background: var(--ink); }
+    .uses-head { display: flex; align-items: end; justify-content: space-between; gap: 40px; }
+    .uses .eyebrow { color: #d8aa82; }
+    .uses .section-lead { color: rgba(255,255,255,.62); }
+    .uses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 56px; background: rgba(255,255,255,.15); }
+    .use-card { position: relative; min-height: 250px; padding: 34px; background: var(--ink); }
+    .use-icon { display: grid; width: 44px; height: 44px; place-items: center; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; color: #dfb38e; font-family: var(--serif); }
+    .use-icon img { width: 22px; height: 22px; filter: invert(78%) sepia(32%) saturate(568%) hue-rotate(337deg) brightness(96%); }
+    .use-card h3 { margin: 52px 0 8px; font-family: var(--serif); font-size: 1.65rem; font-weight: 400; }
+    .use-card p { margin: 0; color: rgba(255,255,255,.58); font-size: .83rem; }
+
+    .faq { padding: 130px 0; }
+    .faq-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 90px; }
+    .faq-title { position: sticky; top: 120px; align-self: start; }
+    .faq-title h2 { margin: 0; font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.8rem); font-weight: 400; letter-spacing: -.05em; line-height: .95; }
+    .faq-title p { margin: 20px 0 0; color: var(--muted); }
+    .faq-list { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary { position: relative; padding: 25px 46px 25px 0; cursor: pointer; list-style: none; font-family: var(--serif); font-size: 1.22rem; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { position: absolute; top: 24px; right: 5px; content: '+'; color: var(--copper); font-family: var(--sans); font-size: 1.35rem; transition: transform .2s ease; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { max-width: 660px; margin: -6px 0 25px; color: var(--muted); font-size: .89rem; }
+
+    .cta { padding: 0 0 120px; }
+    .cta-box {
+      display: flex;
+      min-height: 260px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      padding: 52px 64px;
+      border-radius: 14px;
+      color: white;
+      background: var(--copper);
+    }
+    .cta-box h2 { max-width: 680px; margin: 0; font-family: var(--serif); font-size: clamp(2.4rem, 4.5vw, 4.3rem); font-weight: 400; letter-spacing: -.045em; line-height: .95; }
+    .cta-box p { margin: 16px 0 0; color: rgba(255,255,255,.75); }
+    .cta-box .btn { flex: 0 0 auto; color: var(--ink); background: var(--paper); }
+
+    .site-footer { padding: 70px 0 28px; color: rgba(255,255,255,.78); background: var(--ink-deep); }
+    .footer-top { display: grid; grid-template-columns: 1.7fr 1fr 1fr; gap: 70px; padding-bottom: 60px; }
+    .footer-brand .brand { color: white; }
+    .footer-brand p { max-width: 390px; margin: 22px 0 0; color: rgba(255,255,255,.5); font-size: .86rem; }
+    .footer-col h3 { margin: 0 0 20px; color: #d9ae8c; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; }
+    .footer-col a { display: block; width: fit-content; margin: 10px 0; color: rgba(255,255,255,.68); font-size: .84rem; }
+    .footer-col a:hover { color: white; }
+    .footer-social { display: inline-flex !important; min-height: 42px; align-items: center; gap: 9px; padding: 0 13px; border: 1px solid rgba(255,255,255,.18); border-radius: 7px; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.38); font-size: .68rem; }
+
+    .cart-overlay {
+      position: fixed;
+      z-index: 60;
+      inset: 0;
+      visibility: hidden;
+      opacity: 0;
+      background: rgba(8, 20, 15, .5);
+      backdrop-filter: blur(3px);
+      transition: opacity .25s ease, visibility .25s ease;
+    }
+    .cart-drawer {
+      position: fixed;
+      z-index: 70;
+      top: 0;
+      right: 0;
+      display: grid;
+      width: min(460px, 100%);
+      height: 100dvh;
+      grid-template-rows: auto 1fr auto;
+      transform: translateX(100%);
+      color: var(--ink);
+      background: var(--paper);
+      box-shadow: -20px 0 70px rgba(0,0,0,.18);
+      transition: transform .32s cubic-bezier(.22,.8,.24,1);
+    }
+    .cart-open .cart-overlay { visibility: visible; opacity: 1; }
+    .cart-open .cart-drawer { transform: translateX(0); }
+    .cart-header { display: flex; align-items: center; justify-content: space-between; padding: 24px 26px; border-bottom: 1px solid var(--line); }
+    .cart-header h2 { margin: 0; font-family: var(--serif); font-size: 1.65rem; font-weight: 400; }
+    .close-cart { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line); border-radius: 7px; cursor: pointer; background: transparent; font-size: 1.3rem; }
+    .cart-items { overflow: auto; padding: 10px 26px 30px; }
+    .empty-cart { display: grid; min-height: 60vh; place-items: center; color: var(--muted); text-align: center; }
+    .empty-cart span { display: block; margin-bottom: 12px; color: var(--olive); font-family: var(--serif); font-size: 3rem; }
+    .cart-item { display: grid; grid-template-columns: 74px 1fr; gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .cart-thumb { width: 74px; height: 92px; object-fit: cover; border-radius: 6px; background: #eee8dc; }
+    .cart-item-top { display: flex; justify-content: space-between; gap: 10px; }
+    .cart-item h3 { margin: 2px 0 0; font-family: var(--serif); font-size: 1rem; font-weight: 400; line-height: 1.15; }
+    .cart-item small { color: var(--muted); }
+    .remove-item { padding: 0; border: 0; cursor: pointer; color: var(--muted); background: transparent; font-size: 1rem; }
+    .cart-item-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
+    .qty-control { display: inline-grid; grid-template-columns: 32px 38px 32px; align-items: center; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+    .qty-control button { height: 32px; border: 0; cursor: pointer; background: transparent; }
+    .qty-control span { text-align: center; font-size: .77rem; font-weight: 800; }
+    .line-total { font-family: var(--serif); font-size: 1.05rem; }
+    .cart-footer { padding: 22px 26px 26px; border-top: 1px solid var(--line); background: var(--warm); }
+    .cart-mode { display: flex; justify-content: space-between; margin-bottom: 11px; color: var(--muted); font-size: .75rem; }
+    .cart-mode strong { color: var(--copper-dark); }
+    .cart-total { display: flex; align-items: end; justify-content: space-between; margin-bottom: 18px; }
+    .cart-total span:first-child { font-weight: 800; }
+    .cart-total strong { font-family: var(--serif); font-size: 2rem; font-weight: 400; line-height: 1; }
+    .checkout { width: 100%; }
+    .checkout:disabled { cursor: not-allowed; opacity: .45; transform: none; }
+    .cart-disclaimer { margin: 11px 0 0; color: var(--muted); font-size: .67rem; line-height: 1.4; text-align: center; }
+
+    .toast {
+      position: fixed;
+      z-index: 90;
+      left: 50%;
+      bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 6px;
+      transform: translate(-50%, 24px);
+      visibility: hidden;
+      opacity: 0;
+      color: white;
+      background: var(--ink-deep);
+      box-shadow: var(--shadow);
+      font-size: .78rem;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+    .toast.show { visibility: visible; opacity: 1; transform: translate(-50%, 0); }
+
+    .whatsapp-float {
+      position: fixed;
+      z-index: 45;
+      right: 20px;
+      bottom: 20px;
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      gap: 10px;
+      padding: 0 18px;
+      border: 1px solid #1ebd59;
+      border-radius: 8px;
+      color: #fff;
+      background: #25d366;
+      box-shadow: 0 14px 35px rgba(19, 88, 47, .28);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .06em;
+    }
+    .whatsapp-float:hover { background: #1fbd5a; transform: translateY(-2px); }
+
+    .product-actions { display: grid; grid-template-columns: 1fr 52px; gap: 8px; margin-top: 18px; }
+    .product-actions .add-button { width: 52px; min-height: 50px; margin-top: 0; padding: 0; font-size: 1.05rem; }
+    .product-link { width: 100%; min-height: 50px; color: #fff; border-color: var(--ink); background: var(--ink); }
+    .product-link:hover { color: #fff; background: var(--ink-deep); }
+
+    .community { padding: 120px 0; background: #fff; }
+    .community-head { display: flex; align-items: end; justify-content: space-between; gap: 50px; margin-bottom: 44px; }
+    .community-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 14px; }
+    .community-review { display: flex; min-height: 420px; flex-direction: column; justify-content: space-between; padding: 48px; border: 1px solid var(--line); border-radius: 9px; background: var(--warm); }
+    .review-stars { color: var(--copper); font-size: 1.05rem; letter-spacing: .22em; }
+    .community-review blockquote { max-width: 680px; margin: 38px 0; font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.8rem); letter-spacing: -.04em; line-height: 1.02; }
+    .review-status { max-width: 570px; color: var(--muted); font-size: .82rem; }
+    .review-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+    .btn-instagram { color: #fff; border-color: var(--ink); background: var(--ink); }
+    .btn-instagram:hover { color: #fff; background: var(--ink-deep); }
+    .social-posts { display: grid; gap: 14px; }
+    .social-quote { display: flex; min-height: 128px; align-items: center; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 9px; background: #fff; }
+    .social-quote-icon { display: grid; width: 48px; height: 48px; flex: 0 0 auto; place-items: center; border-radius: 9px; background: linear-gradient(135deg, #833ab4, #e1306c 55%, #f77737); }
+    .social-quote-icon img { width: 23px; height: 23px; }
+    .social-quote p { margin: 0; font-family: var(--serif); font-size: 1.05rem; line-height: 1.35; }
+    .social-quote small { display: block; margin-top: 7px; color: var(--muted); font-family: var(--sans); font-size: .67rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 1020px) {
+      .nav-links { display: none; }
+      .menu-button { display: inline-flex; }
+      .nav-links.open {
+        position: absolute;
+        top: 76px;
+        right: 20px;
+        left: 20px;
+        display: grid;
+        gap: 0;
+        padding: 12px 20px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--paper);
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .nav-links.open a:last-child { border-bottom: 0; }
+      .hero-content { width: min(620px, 62%); }
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
+      .catalog-head { align-items: start; flex-direction: column; }
+      .family-shell { grid-template-columns: 1fr; }
+      .family-copy { padding: 64px 56px 24px; }
+      .family-image { min-height: 430px; }
+      .family-image::after { background: linear-gradient(180deg, var(--ink-deep), transparent 23%); }
+      .story-grid { gap: 56px; }
+      .food-gallery-head { align-items: start; flex-direction: column; gap: 20px; }
+      .community-head { align-items: start; flex-direction: column; gap: 20px; }
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(100% - 28px, 1180px); }
+      .promo-bar { padding-block: 7px; font-size: .63rem; }
+      .site-header { height: 68px; }
+      .brand-name { font-size: 1rem; }
+      .brand-symbol { width: 31px; height: 31px; }
+      .cart-button { width: 44px; padding: 0; }
+      .cart-button > span:first-child { display: none; }
+      .header-whatsapp { width: 44px; padding: 0; }
+      .header-whatsapp .wa-label { display: none; }
+      .header-instagram { display: none; }
+      .hero { min-height: 720px; align-items: end; background-position: 67% center; }
+      .hero::before { background: linear-gradient(180deg, rgba(255,255,255,.06) 5%, rgba(255,255,255,.52) 43%, rgba(255,255,255,.99) 69%); }
+      .hero-content { width: 100%; padding: 330px 0 58px; }
+      .hero h1 { max-width: 530px; font-size: clamp(3.7rem, 18vw, 5.6rem); }
+      .hero-copy { margin-top: 20px; font-size: .96rem; }
+      .hero-actions .btn { flex: 1; padding-inline: 16px; }
+      .hero-note { align-items: flex-start; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .trust-item, .trust-item:first-child, .trust-item:last-child { padding: 17px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .trust-item:last-child { border-bottom: 0; }
+      .catalog { padding: 88px 0 96px; }
+      .catalog-head { gap: 28px; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 30px; }
+      .product-visual { height: 245px; }
+      .product-body { padding: 17px; }
+      .product-name { font-size: 1.12rem; }
+      .product-desc { display: none; }
+      .price-row { align-items: start; flex-direction: column; margin-top: 17px; }
+      .price-compare { min-height: 30px; text-align: left; }
+      .price { font-size: 1.48rem; }
+      .add-button { min-height: 48px; padding-inline: 12px; font-size: .73rem; }
+      .family-banner { padding-bottom: 92px; }
+      .family-shell { border-radius: 10px; }
+      .family-copy { padding: 50px 26px 20px; }
+      .family-image { min-height: 330px; }
+      .story { padding: 92px 0; }
+      .story-grid { grid-template-columns: 1fr; }
+      .story-photo { aspect-ratio: 4 / 4; border-radius: 7px; }
+      .food-gallery { padding: 88px 0; }
+      .food-grid { grid-template-columns: 1fr; grid-template-rows: 360px 250px 250px; }
+      .food-shot:first-child { grid-row: auto; }
+      .community { padding: 88px 0; }
+      .community-grid { grid-template-columns: 1fr; }
+      .community-review { min-height: 370px; padding: 30px; }
+      .uses { padding: 88px 0; }
+      .uses-head { align-items: start; flex-direction: column; }
+      .uses-grid { grid-template-columns: 1fr; }
+      .use-card { min-height: 210px; }
+      .use-card h3 { margin-top: 38px; }
+      .faq { padding: 92px 0; }
+      .faq-grid { grid-template-columns: 1fr; gap: 46px; }
+      .faq-title { position: static; }
+      .cta { padding-bottom: 88px; }
+      .cta-box { align-items: flex-start; flex-direction: column; padding: 40px 28px; border-radius: 10px; }
+      .cta-box .btn { width: 100%; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 45px 24px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; }
+      .whatsapp-float { right: 14px; bottom: 14px; }
+      .cart-header, .cart-footer { padding-inline: 20px; }
+      .cart-items { padding-inline: 20px; }
+    }
+
+    @media (max-width: 430px) {
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .product-grid { grid-template-columns: 1fr; }
+      .product-visual { height: 360px; }
+      .product-desc { display: block; min-height: 0; }
+      .price-row { align-items: end; flex-direction: row; }
+      .price-compare { min-height: 0; text-align: right; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="promo-bar">Pedidos exclusivamente por WhatsApp · +51 950 320 964</div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="TOROMATA, ir al inicio">
+        <span class="brand-symbol" aria-hidden="true">ᴠ</span>
+        <span class="brand-name">TOROMATA</span>
+      </a>
+
+      <nav class="nav-links" id="mainNav" aria-label="Navegación principal">
+        <a href="#productos">Productos</a>
+        <a href="#origen">Origen</a>
+        <a href="#historia">Nuestra esencia</a>
+        <a href="#comunidad">Comunidad</a>
+        <a href="#preguntas">Preguntas</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="header-instagram" href="https://www.instagram.com/toromata.pe?igsh=MWR0NTNvaTZ4a2FhdA==&igsi=MWR0NTNvaTZ4a2FhdA==" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram de TOROMATA"><img class="social-logo" src="assets/instagram.svg" alt=""></a>
+        <a class="btn btn-whatsapp header-whatsapp" href="https://wa.me/51950320964?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20TOROMATA." target="_blank" rel="noopener noreferrer" aria-label="Contactar a TOROMATA por WhatsApp"><img class="wa-logo" src="assets/whatsapp.svg" alt=""><span class="wa-label">WHATSAPP</span></a>
+        <button class="cart-button" id="openCart" type="button" aria-label="Abrir carrito">
+          <span>Mi pedido</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú" aria-controls="mainNav" aria-expanded="false">≡</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content">
+          <p class="eyebrow">Acarí, tierra de oliva</p>
+          <h1>El sabor de Acarí, <em>en tu mesa.</em></h1>
+          <p class="hero-copy">Aceite de oliva extra virgen TOROMATA para compartir, cocinar y terminar cada plato. Elige tu presentación y pide directo por WhatsApp.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#productos">Ver presentaciones <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-whatsapp" href="https://wa.me/51950320964?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20aceites%20TOROMATA." target="_blank" rel="noopener noreferrer"><img class="wa-logo" src="assets/whatsapp.svg" alt=""> WHATSAPP</a>
+          </div>
+          <p class="hero-note"><span aria-hidden="true">◆</span> Arma tu pedido y coordina disponibilidad, pago y entrega directamente por WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Beneficios de compra">
+      <div class="container trust-grid">
+        <div class="trust-item"><span class="trust-icon"><img src="assets/icon-origin.svg" alt=""></span><div><strong>Origen Acarí</strong><small>Una identidad nacida en tierra de oliva.</small></div></div>
+        <div class="trust-item"><span class="trust-icon"><img src="assets/icon-quality.svg" alt=""></span><div><strong>Extra virgen</strong><small>Para la mesa y tus recetas cotidianas.</small></div></div>
+        <div class="trust-item"><span class="trust-icon"><img src="assets/icon-presentations.svg" alt=""></span><div><strong>7 presentaciones</strong><small>Desde 200 ml hasta formato familiar.</small></div></div>
+        <div class="trust-item"><span class="trust-icon is-whatsapp"><img src="assets/whatsapp.svg" alt=""></span><div><strong>Compra directa</strong><small>Atención por WhatsApp al +51 950 320 964.</small></div></div>
+      </div>
+    </section>
+
+    <section class="catalog" id="productos">
+      <div class="container">
+        <div class="catalog-head reveal">
+          <div>
+            <p class="eyebrow">Elige tu medida</p>
+            <h2 class="section-title">Una presentación para cada mesa.</h2>
+          </div>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card reveal" data-id="200" data-name="Aceite extra virgen 200 ml" data-size="200 ml" data-regular="18.46" data-image="assets/toromata-botella-v2.webp">
+            <div class="product-visual"><img src="assets/toromata-botella-v2.webp" alt="Botella TOROMATA de 200 ml" loading="lazy"><span class="product-size">200 ml</span></div>
+            <div class="product-body">
+              <p class="product-kicker">Formato personal</p>
+              <h3 class="product-name">Extra virgen 200 ml</h3>
+              <p class="product-desc">Compacto y práctico para probar, regalar o llevar.</p>
+              <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 18.46</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
+              <div class="product-actions"><a class="btn product-link" href="producto.html?id=200">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 200 ml al pedido">＋</button></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-id="250" data-name="Aceite extra virgen 250 ml" data-size="250 ml" data-regular="20.17" data-image="assets/toromata-botella-v2.webp">
+            <div class="product-visual"><img src="assets/toromata-botella-v2.webp" alt="Botella TOROMATA de 250 ml" loading="lazy"><span class="product-size">250 ml</span></div>
+            <div class="product-body">
+              <p class="product-kicker">Formato personal</p>
+              <h3 class="product-name">Extra virgen 250 ml</h3>
+              <p class="product-desc">Una medida versátil para el uso diario y los detalles.</p>
+              <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 20.17</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
+              <div class="product-actions"><a class="btn product-link" href="producto.html?id=250">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 250 ml al pedido">＋</button></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-id="500" data-name="Aceite extra virgen 500 ml" data-size="500 ml" data-regular="29.77" data-image="assets/toromata-botella-v2.webp">
+            <div class="product-visual"><img src="assets/toromata-botella-v2.webp" alt="Botella TOROMATA de 500 ml" loading="lazy"><span class="product-size">500 ml</span></div>
+            <div class="product-body">
+              <p class="product-kicker">Favorito de la mesa</p>
+              <h3 class="product-name">Extra virgen 500 ml</h3>
+              <p class="product-desc">El punto medio ideal para tener siempre a la mano.</p>
+              <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 29.77</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
+              <div class="product-actions"><a class="btn product-link" href="producto.html?id=500">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 500 ml al pedido">＋</button></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-id="750" data-name="Aceite extra virgen 750 ml" data-size="750 ml" data-regular="45.75" data-image="assets/toromata-botella-v2.webp">
+            <div class="product-visual"><img src="assets/toromata-botella-v2.webp" alt="Botella TOROMATA de 750 ml" loading="lazy"><span class="product-size">750 ml</span></div>
+            <div class="product-body">
+              <p class="product-kicker">Para compartir</p>
+              <h3 class="product-name">Extra virgen 750 ml</h3>
+              <p class="product-desc">Generoso para cocinas activas y mesas compartidas.</p>
+              <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 45.75</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
+              <div class="product-actions"><a class="btn product-link" href="producto.html?id=750">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 750 ml al pedido">＋</button></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-id="1000" data-name="Aceite extra virgen 1 litro" data-size="1 litro" data-regular="60.98" data-image="assets/toromata-botella-v2.webp">
+            <div class="product-visual"><img src="assets/toromata-botella-v2.webp" alt="Botella TOROMATA de 1 litro" loading="lazy"><span class="product-size">1 litro</span></div>
+            <div class="product-body">
+              <p class="product-kicker">Uso frecuente</p>
+              <h3 class="product-name">Extra virgen 1 litro</h3>
+              <p class="product-desc">Más aceite para quienes lo convierten en un esencial.</p>
+              <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 60.98</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
+              <div class="product-actions"><a class="btn product-link" href="producto.html?id=1000">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 1 litro al pedido">＋</button></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-id="3000" data-name="Aceite extra virgen 3 litros" data-size="3 litros" data-regular="139.17" data-image="assets/toromata-talonera-v2.webp">
+            <div class="product-visual"><img src="assets/toromata-talonera-v2.webp" alt="Talonera TOROMATA de 3 litros" loading="lazy"><span class="product-size">3 litros</span></div>
+            <div class="product-body">
+              <p class="product-kicker">Formato familiar</p>
+              <h3 class="product-name">Extra virgen 3 litros</h3>
+              <p class="product-desc">Rendimiento para familias, negocios y cocinas exigentes.</p>
+              <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 139.17</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
+              <div class="product-actions"><a class="btn product-link" href="producto.html?id=3000">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 3 litros al pedido">＋</button></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-id="4000" data-name="Aceite extra virgen 4 litros" data-size="4 litros" data-regular="182.83" data-image="assets/toromata-talonera-v2.webp">
+            <div class="product-visual"><img src="assets/toromata-talonera-v2.webp" alt="Talonera TOROMATA de 4 litros" loading="lazy"><span class="product-size">4 litros</span></div>
+            <div class="product-body">
+              <p class="product-kicker">Máximo rendimiento</p>
+              <h3 class="product-name">Extra virgen 4 litros</h3>
+              <p class="product-desc">La presentación más amplia de nuestra línea TOROMATA.</p>
+              <div class="price-row"><div><span class="price-label">Precio</span><span class="price">S/ 182.83</span></div><div class="price-compare">Pedido directo<strong>Vía WhatsApp</strong></div></div>
+              <div class="product-actions"><a class="btn product-link" href="producto.html?id=4000">Ver producto</a><button class="btn btn-primary add-button" type="button" aria-label="Agregar aceite de 4 litros al pedido">＋</button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="family-banner" id="origen">
+      <div class="container family-shell reveal">
+        <div class="family-copy">
+          <p class="eyebrow">Origen TOROMATA</p>
+          <h2>Acarí,<br>tierra de oliva.</h2>
+          <p>Una identidad inspirada en el paisaje, el olivo y las mesas de Acarí. La paleta crema, verde y dorada de TOROMATA recoge el carácter cálido de su tierra.</p>
+          <a class="btn btn-whatsapp" href="https://wa.me/51950320964?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20TOROMATA." target="_blank" rel="noopener noreferrer"><img class="wa-logo" src="assets/whatsapp.svg" alt=""> WHATSAPP</a>
+        </div>
+        <div class="family-image">
+          <img src="assets/toromata-sello.webp" alt="Ilustración de identidad TOROMATA, Acarí tierra de oliva" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="historia">
+      <div class="container story-grid">
+        <div class="story-photo reveal">
+          <img src="assets/toromata-mesa.webp" alt="Aceite TOROMATA servido sobre una ensalada en una mesa de campo" loading="lazy">
+        </div>
+        <div class="story-content reveal">
+          <p class="eyebrow">La esencia TOROMATA</p>
+          <h2>Los mejores momentos empiezan alrededor de la mesa.</h2>
+          <p>TOROMATA acompaña la cocina cotidiana con una presencia honesta y memorable. Ingredientes frescos, sabores reales y el toque generoso del aceite de oliva extra virgen.</p>
+          <div class="story-list">
+            <div class="story-point"><span class="story-index">I</span><div><strong>Un formato para cada uso</strong><span>Desde el detalle de 200 ml hasta la talonera de 4 litros.</span></div></div>
+            <div class="story-point"><span class="story-index">II</span><div><strong>Diseño sobrio y reconocible</strong><span>Vidrio verde, papel marfil y un acento cobre fácil de llevar a producción.</span></div></div>
+            <div class="story-point"><span class="story-index">III</span><div><strong>Compra simple</strong><span>Elige cantidades, revisa tu total y coordina tu pedido en un mensaje.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="food-gallery" aria-labelledby="momentos-title">
+      <div class="container">
+        <div class="food-gallery-head reveal">
+          <div><p class="eyebrow">Sabor que reúne</p><h2 class="section-title" id="momentos-title">Hecho para momentos reales.</h2></div>
+          <p class="section-lead">Pan recién cortado, vegetales, queso, aceitunas y una mesa compartida. TOROMATA encuentra su lugar en lo cotidiano.</p>
+        </div>
+        <div class="food-grid reveal">
+          <figure class="food-shot"><img src="assets/toromata-pan-mesa.webp" alt="Mesa con pan, tomate, queso, aceitunas y aceite TOROMATA" loading="lazy"><figcaption class="food-caption">Pan, tomate y queso · una mesa simple y generosa</figcaption></figure>
+          <figure class="food-shot"><img src="assets/toromata-vegetales.webp" alt="Vegetales frescos y aceite TOROMATA vistos desde arriba" loading="lazy"><figcaption class="food-caption">Vegetales frescos · color y sabor cotidiano</figcaption></figure>
+          <figure class="food-shot"><img src="assets/toromata-mesa-familia.webp" alt="Mesa familiar al aire libre acompañada de TOROMATA" loading="lazy"><figcaption class="food-caption">Alrededor de la mesa · para compartir</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="uses">
+      <div class="container">
+        <div class="uses-head reveal">
+          <div><p class="eyebrow">Siempre en tu cocina</p><h2 class="section-title">Tres formas de disfrutarlo.</h2></div>
+          <p class="section-lead">Un aceite pensado para terminar, acompañar y dar personalidad a preparaciones sencillas.</p>
+        </div>
+        <div class="uses-grid reveal">
+          <article class="use-card"><span class="use-icon" aria-hidden="true"><img src="assets/icon-leaf.svg" alt=""></span><h3>En crudo</h3><p>Sobre ensaladas, quesos, panes y vegetales recién servidos.</p></article>
+          <article class="use-card"><span class="use-icon" aria-hidden="true"><img src="assets/icon-quality.svg" alt=""></span><h3>Para cocinar</h3><p>Como parte de tus aderezos, pastas y preparaciones del día.</p></article>
+          <article class="use-card"><span class="use-icon" aria-hidden="true"><img src="assets/icon-presentations.svg" alt=""></span><h3>Para compartir</h3><p>En una mesa generosa o como un detalle con identidad propia.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="community" id="comunidad">
+      <div class="container">
+        <div class="community-head reveal">
+          <div><p class="eyebrow">Reseñas y comunidad</p><h2 class="section-title">Lo que se comparte alrededor de la mesa.</h2></div>
+          <p class="section-lead">La experiencia de nuestros clientes importa. Estamos reuniendo opiniones reales para publicarlas con autorización.</p>
+        </div>
+        <div class="community-grid reveal">
+          <article class="community-review">
+            <div>
+              <div class="review-stars">RESEÑAS REALES</div>
+              <blockquote>¿Ya probaste TOROMATA? Cuéntanos cómo llegó a tu mesa.</blockquote>
+              <p class="review-status">No publicamos testimonios inventados. Envíanos tu experiencia por WhatsApp o etiquétanos en Instagram y podrá aparecer aquí con tu autorización.</p>
+            </div>
+            <div class="review-actions">
+              <a class="btn btn-whatsapp" href="https://wa.me/51950320964?text=Hola%2C%20quiero%20compartir%20mi%20rese%C3%B1a%20sobre%20TOROMATA." target="_blank" rel="noopener noreferrer"><img class="wa-logo" src="assets/whatsapp.svg" alt=""> ENVIAR RESEÑA</a>
+              <a class="btn btn-instagram" href="https://www.instagram.com/toromata.pe?igsh=MWR0NTNvaTZ4a2FhdA==&igsi=MWR0NTNvaTZ4a2FhdA==" target="_blank" rel="noopener noreferrer"><img class="social-logo" src="assets/instagram.svg" alt=""> VER INSTAGRAM</a>
+            </div>
+          </article>
+          <div class="social-posts">
+            <a class="social-quote" href="https://www.instagram.com/toromata.pe?igsh=MWR0NTNvaTZ4a2FhdA==&igsi=MWR0NTNvaTZ4a2FhdA==" target="_blank" rel="noopener noreferrer"><span class="social-quote-icon"><img src="assets/instagram.svg" alt=""></span><p>“El verdadero sabor de Acarí en tu mesa.”<small>@toromata.pe · Instagram</small></p></a>
+            <a class="social-quote" href="https://www.instagram.com/toromata.pe?igsh=MWR0NTNvaTZ4a2FhdA==&igsi=MWR0NTNvaTZ4a2FhdA==" target="_blank" rel="noopener noreferrer"><span class="social-quote-icon"><img src="assets/instagram.svg" alt=""></span><p>“Ingredientes frescos, sabores reales y el toque perfecto de TOROMATA.”<small>@toromata.pe · Instagram</small></p></a>
+            <a class="social-quote" href="https://www.instagram.com/toromata.pe?igsh=MWR0NTNvaTZ4a2FhdA==&igsi=MWR0NTNvaTZ4a2FhdA==" target="_blank" rel="noopener noreferrer"><span class="social-quote-icon"><img src="assets/instagram.svg" alt=""></span><p>“Los mejores momentos siempre empiezan alrededor de la mesa.”<small>@toromata.pe · Instagram</small></p></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="preguntas">
+      <div class="container faq-grid">
+        <div class="faq-title reveal">
+          <p class="eyebrow">Antes de pedir</p>
+          <h2>Preguntas frecuentes.</h2>
+          <p>Todo lo esencial para armar tu compra.</p>
+        </div>
+        <div class="faq-list reveal">
+          <details><summary>¿Dónde realizo la compra?</summary><p>Todos los pedidos se solicitan exclusivamente por WhatsApp al +51 950 320 964. La web prepara el detalle de productos, cantidades y total para enviarlo directamente a ese número.</p></details>
+          <details><summary>¿Cómo se confirma mi pedido?</summary><p>Agrega los productos al carrito y pulsa “WHATSAPP · ENVIAR PEDIDO”. Se generará un resumen con cantidades, precios y total para coordinar disponibilidad, pago y entrega.</p></details>
+          <details><summary>¿El precio incluye el envío?</summary><p>Los precios mostrados corresponden al producto. El costo de entrega se coordina según el destino y el volumen total del pedido.</p></details>
+          <details><summary>¿Dónde veo el detalle de cada presentación?</summary><p>Pulsa “Ver producto” en cualquier presentación para consultar su precio, tamaño, usos sugeridos y pedir la cantidad que necesitas por WhatsApp.</p></details>
+          <details><summary>¿Puedo combinar diferentes presentaciones?</summary><p>Sí. Puedes incluir distintos tamaños y cantidades en el mismo pedido antes de enviarlo por WhatsApp.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-box reveal">
+        <div><h2>¿Listo para llevar TOROMATA a tu mesa?</h2><p>Elige tu presentación y arma tu pedido en pocos pasos.</p></div>
+        <a class="btn" href="#productos">Empezar mi pedido <span aria-hidden="true">↑</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="#inicio"><span class="brand-symbol" aria-hidden="true">ᴠ</span><span class="brand-name">TOROMATA</span></a>
+          <p>Aceite de oliva extra virgen en presentaciones para tu mesa, tu negocio y cada ocasión.</p>
+        </div>
+        <div class="footer-col"><h3>Explorar</h3><a href="#productos">Productos</a><a href="#origen">Origen Acarí</a><a href="#historia">Nuestra esencia</a><a href="#comunidad">Reseñas y comunidad</a></div>
+        <div class="footer-col"><h3>Contacto</h3><a class="footer-social" href="https://www.instagram.com/toromata.pe?igsh=MWR0NTNvaTZ4a2FhdA==&igsi=MWR0NTNvaTZ4a2FhdA==" target="_blank" rel="noopener noreferrer"><img class="social-logo" src="assets/instagram.svg" alt=""> @toromata.pe</a><button class="btn btn-secondary" id="footerCart" type="button">Ver mi pedido</button></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> TOROMATA. Todos los derechos reservados.</span><span>Acarí, tierra de oliva.</span></div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/51950320964?text=Hola%2C%20quiero%20hacer%20un%20pedido%20de%20TOROMATA." target="_blank" rel="noopener noreferrer" aria-label="Comprar TOROMATA por WhatsApp"><img class="wa-logo" src="assets/whatsapp.svg" alt=""> WHATSAPP</a>
+
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-labelledby="cartTitle" aria-hidden="true">
+    <div class="cart-header"><h2 id="cartTitle">Tu pedido</h2><button class="close-cart" id="closeCart" type="button" aria-label="Cerrar carrito">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-mode"><span>Canal de compra</span><strong id="cartMode">WhatsApp</strong></div>
+      <div class="cart-total"><span>Total estimado</span><strong id="cartTotal">S/ 0.00</strong></div>
+      <button class="btn btn-whatsapp checkout" id="checkout" type="button" disabled><img class="wa-logo" src="assets/whatsapp.svg" alt=""> WHATSAPP · ENVIAR PEDIDO</button>
+      <p class="cart-disclaimer">La disponibilidad, el pago y el costo de entrega se confirman al coordinar el pedido.</p>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><span aria-hidden="true">✓</span><span id="toastText">Producto agregado</span></div>
+
+  <script>
+    (() => {
+      const body = document.body;
+      const cards = [...document.querySelectorAll('.product-card')];
+      const cart = new Map();
+      const products = new Map(cards.map(card => [card.dataset.id, {
+        id: card.dataset.id,
+        name: card.dataset.name,
+        size: card.dataset.size,
+        regular: Number(card.dataset.regular),
+        image: card.dataset.image
+      }]));
+
+      const els = {
+        cartCount: document.getElementById('cartCount'),
+        cartItems: document.getElementById('cartItems'),
+        cartTotal: document.getElementById('cartTotal'),
+        cartMode: document.getElementById('cartMode'),
+        checkout: document.getElementById('checkout'),
+        drawer: document.getElementById('cartDrawer'),
+        overlay: document.getElementById('cartOverlay'),
+        toast: document.getElementById('toast'),
+        toastText: document.getElementById('toastText'),
+        menu: document.getElementById('mainNav'),
+        menuButton: document.getElementById('menuButton')
+      };
+
+      let toastTimer;
+      let lastFocused;
+      const WHATSAPP_NUMBER = '51950320964';
+      const money = value => `S/ ${value.toFixed(2)}`;
+      const unitPrice = product => product.regular;
+
+      function addToCart(id, button) {
+        cart.set(id, cart.has(id) ? cart.get(id) + 1 : 1);
+        updateCart();
+        showToast('Producto agregado al pedido');
+        if (button) {
+          const original = button.innerHTML;
+          button.classList.add('added');
+          button.innerHTML = 'Agregado <span aria-hidden="true">✓</span>';
+          setTimeout(() => { button.classList.remove('added'); button.innerHTML = original; }, 1000);
+        }
+      }
+
+      function changeQty(id, direction) {
+        if (!cart.has(id)) return;
+        const next = cart.get(id) + direction;
+        if (next < 1) {
+          cart.delete(id);
+        } else {
+          cart.set(id, next);
+        }
+        updateCart();
+      }
+
+      function updateCart() {
+        const entries = [...cart.entries()];
+        const count = entries.reduce((sum, [, qty]) => sum + qty, 0);
+        const total = entries.reduce((sum, [id, qty]) => sum + unitPrice(products.get(id)) * qty, 0);
+        els.cartCount.textContent = count;
+        els.cartTotal.textContent = money(total);
+        els.cartMode.textContent = 'WhatsApp · +51 950 320 964';
+        els.checkout.disabled = entries.length === 0;
+
+        if (!entries.length) {
+          els.cartItems.innerHTML = '<div class="empty-cart"><div><span>◌</span><strong>Tu pedido está vacío</strong><br><small>Elige una presentación para comenzar.</small></div></div>';
+          return;
+        }
+
+        els.cartItems.innerHTML = entries.map(([id, qty]) => {
+          const product = products.get(id);
+          return `<article class="cart-item" data-cart-id="${id}">
+            <img class="cart-thumb" src="${product.image}" alt="${product.name}">
+            <div>
+              <div class="cart-item-top"><div><h3>${product.name}</h3><small>${money(unitPrice(product))} c/u</small></div><button class="remove-item" type="button" data-action="remove" aria-label="Quitar ${product.name}">×</button></div>
+              <div class="cart-item-bottom"><div class="qty-control"><button type="button" data-action="minus" aria-label="Disminuir cantidad">−</button><span>${qty}</span><button type="button" data-action="plus" aria-label="Aumentar cantidad">＋</button></div><span class="line-total">${money(unitPrice(product) * qty)}</span></div>
+            </div>
+          </article>`;
+        }).join('');
+      }
+
+      function openCart() {
+        lastFocused = document.activeElement;
+        body.classList.add('cart-open');
+        els.drawer.setAttribute('aria-hidden', 'false');
+        els.overlay.setAttribute('aria-hidden', 'false');
+        document.getElementById('closeCart').focus();
+      }
+
+      function closeCart() {
+        body.classList.remove('cart-open');
+        els.drawer.setAttribute('aria-hidden', 'true');
+        els.overlay.setAttribute('aria-hidden', 'true');
+        if (lastFocused) lastFocused.focus();
+      }
+
+      function showToast(message) {
+        clearTimeout(toastTimer);
+        els.toastText.textContent = message;
+        els.toast.classList.add('show');
+        toastTimer = setTimeout(() => els.toast.classList.remove('show'), 2200);
+      }
+
+      function checkout() {
+        if (!cart.size) return;
+        const lines = [...cart.entries()].map(([id, qty]) => {
+          const product = products.get(id);
+          return `• ${product.name}: ${qty} und × ${money(unitPrice(product))} = ${money(unitPrice(product) * qty)}`;
+        });
+        const total = [...cart.entries()].reduce((sum, [id, qty]) => sum + unitPrice(products.get(id)) * qty, 0);
+        const message = [
+          'Hola, quiero solicitar este pedido de TOROMATA:',
+          '',
+          ...lines,
+          '',
+          `Total estimado: ${money(total)}`,
+          '',
+          'Por favor, confírmenme disponibilidad y costo de entrega. Gracias.'
+        ].join('\n');
+        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      }
+
+      cards.forEach(card => card.querySelector('.add-button').addEventListener('click', event => addToCart(card.dataset.id, event.currentTarget)));
+      document.getElementById('openCart').addEventListener('click', openCart);
+      document.getElementById('footerCart').addEventListener('click', openCart);
+      document.getElementById('closeCart').addEventListener('click', closeCart);
+      els.overlay.addEventListener('click', closeCart);
+      els.checkout.addEventListener('click', checkout);
+      els.cartItems.addEventListener('click', event => {
+        const action = event.target.dataset.action;
+        if (!action) return;
+        const item = event.target.closest('[data-cart-id]');
+        const id = item.dataset.cartId;
+        if (action === 'remove') cart.delete(id);
+        if (action === 'minus') changeQty(id, -1);
+        if (action === 'plus') changeQty(id, 1);
+        updateCart();
+      });
+
+      els.menuButton.addEventListener('click', () => {
+        const open = els.menu.classList.toggle('open');
+        els.menuButton.setAttribute('aria-expanded', String(open));
+        els.menuButton.textContent = open ? '×' : '≡';
+      });
+      els.menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        els.menu.classList.remove('open');
+        els.menuButton.setAttribute('aria-expanded', 'false');
+        els.menuButton.textContent = '≡';
+      }));
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          if (body.classList.contains('cart-open')) closeCart();
+          els.menu.classList.remove('open');
+          els.menuButton.setAttribute('aria-expanded', 'false');
+          els.menuButton.textContent = '≡';
+        }
+      });
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .08 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+      updateCart();
+    })();
+  </script>
+</body>
+</html>
