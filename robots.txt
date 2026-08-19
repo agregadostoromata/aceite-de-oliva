@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://agregadostoromata.github.io/aceite-de-oliva/sitemap.xml
